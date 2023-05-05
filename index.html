@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dragon Quest 1 Map - Full interactive map, Walkthrough, Game Information and Resources, FAQ </title>
+  </head>
+  <body>
+    <div id="app" class="app">
+
+      <nav class="navbar m-sm" id="navbar">
+        <button class="toggle-sidebar" id="toggleSidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+
+      <aside class="sidebar hide" id="sidebar">
+        <section class="sidebar-content" id="sidebarContent">
+
+          <div class="logo p-md-top">
+            <img src="./src/assets/images/zdqmap.png" />
+          </div>
+        
+          <menu class="text-dark p-sm">
+            <li> Armors </li>
+            <li> Shields </li>
+            <li> Weapons </li>
+            <li> Spells </li>
+            <li> Items </li>
+            <li>Monsters</li>
+            <li>Seeds</li>
+            <li>
+              <span>Maps</span>
+              <ul> 
+                <li>Map 1</li>
+              </ul>
+            </li>
+            <li>Walkthrough</li>
+          </menu>
+        </section>
+      </aside>
+
+      <main id="main" class="map"></main>
+
+      <footer>
+
+      </footer>
+    </div>
+    <script src="https://kit.fontawesome.com/d3a20decc0.js" crossorigin="anonymous"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

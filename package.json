@@ -1,0 +1,17 @@
+{
+  "name": "dq1map",
+  "description": "Dragon Quest 1 Map - Full interactive map, Walkthrough, Game Information and Resources, FAQ ",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.62.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
+  }
+}

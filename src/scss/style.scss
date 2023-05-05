@@ -1,0 +1,66 @@
+@import './variables.scss';
+@import './animations.scss';
+@import './helpers.scss';
+@import './theme.scss';
+
+.app {
+  position: relative;
+}
+
+.map {
+  overflow: auto;
+  width:100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 100vh;
+  background: rgba($color: $white, $alpha: 1);
+  border-image: url('../assets/images/border.png') 4 / 4px round;
+  &-content {
+    padding: 4px;
+  }
+  @media screen and (min-width: 768px) {
+    max-width: 250px;
+  }
+  &.animation-show {
+    animation: sidebarAnimationOpen 0.15s;
+  }
+  &.animation-hide {
+    animation: sidebarAnimationClose 0.15s;
+  }
+}
+
+.navbar {
+  z-index: 100;
+  position: fixed;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+.toggle-sidebar{
+  cursor: pointer;
+  padding: 6px;
+  background: rgba($color: $white, $alpha: 1);
+  border-image: url('../assets/images/border.png') 4 / 4px round;
+  color: $dark;
+  min-width: 30px;
+  & i {
+    font-size: 1.2rem;
+  }
+}
+
+.pin {
+  position: absolute;
+  cursor: pointer;
+}
+
+.logo {
+  text-align: center;
+  width: auto;
+}

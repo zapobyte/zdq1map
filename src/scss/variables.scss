@@ -1,0 +1,22 @@
+$dark: #242424;
+$light: #ededed;
+$white: #ffffff;
+
+$none: 0;
+$sm: 0.5rem;
+$md: 1rem;
+$lg: 1.5rem;
+
+
+$colors : (
+  "dark": $dark,
+  "light": $light,
+  "white": $white,
+);
+
+$spacers : (
+ "none": $none,
+  "sm": $sm,
+  "md": $md,
+  "lg": $lg,
+);
