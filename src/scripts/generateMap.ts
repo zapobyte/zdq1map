@@ -31,7 +31,7 @@ export const drawMap = (container: string, img: HTMLImageElement) => {
 
     // Get the image data from the canvas
     const imageData: ImageData | undefined = context?.getImageData(0, 0, img.width, img.height);
-
+    const app: HTMLElement| null = document.getElementById('app');
     // Loop through the image data byte by byte
     if (imageData) {
         for (let i: number = 0; i < imageData.data.length; i += 4) {
@@ -74,8 +74,10 @@ export const drawMap = (container: string, img: HTMLImageElement) => {
         });
     
         // Add the pin to the document
-        document.body.appendChild(pin);
-        span.style.marginLeft = `-${(span.offsetWidth / 4)}px`;
+        app?.appendChild(pin);
+        if(span.offsetWidth - 5 > pin.offsetWidth){
+            span.style.marginLeft = `-${(span.offsetWidth / 4)}px`;
+        }
         span.style.paddingTop = `${(pin.offsetHeight)}px`;
       }
      // Add the canvas to the document
