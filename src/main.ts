@@ -2,7 +2,7 @@
 import './scss/style.scss'
 // Import Dragon Warrior 1 map
 import dw1MapSnes from './assets/images/dw1/maps/dq1snes_map.png';
-import dw1MapGBC from './assets/images/dw1/maps/dw1gbc_map.png';
+// import dw1MapGBC from './assets/images/dw1/maps/dw1gbc_map.png';
 
 import {drawMap} from './scripts/generateMap';
 import { toggleSidebar } from './scripts/navbar';
@@ -27,7 +27,7 @@ main?.addEventListener('click',(event: Event)=> {
   }
 })
 
-navbarToggler?.addEventListener('click',(e)=> {
+navbarToggler?.addEventListener('click',()=> {
   if(sidebar){
     toggleSidebar(sidebar,navbarToggler);
   }
