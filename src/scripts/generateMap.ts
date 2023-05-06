@@ -3,7 +3,21 @@
 // Define the pin positions
 import pins from '../assets/pins.json';
 
-export const drawMap = (img: HTMLImageElement) => {
+function showData (status: boolean, modalContent: HTMLElement ){
+    const modal: HTMLElement | null = document.getElementById('modal');
+    if(modal && modalContent){
+        if(status){
+            modal.classList.remove('hide');
+            modal.classList.add('show');
+        } else {
+            modal.classList.add('hide');
+            modal.classList.remove('show');
+        }
+    }
+   
+} 
+
+export const drawMap = (container: string, img: HTMLImageElement) => {
     // Create a canvas element
     const canvas: HTMLCanvasElement = document.createElement('canvas');
     canvas.width = img.width;
@@ -36,33 +50,36 @@ export const drawMap = (img: HTMLImageElement) => {
             imageData.data[i + 3] = a;
         }
 
-
         // Put the modified image data back onto the canvas
         context?.putImageData(imageData, 0, 0);
-
-        // Add the canvas to the document
-        const main: HTMLElement | null = document.getElementById('main')
-        main?.appendChild(canvas);
-
-        // Loop through the pin positions and add clickable pins to the canvas
-        for (let j = 0; j < pins.length; j++) {
-            // Get the pin position
-            const pinPosition = pins[j];
-            // Create a new pin element
-            const pin = document.createElement('div');
-            pin.classList.add('pin');
-            pin.style.width = pinPosition.width;
-            pin.style.height = pinPosition.height;
-            pin.style.left = pinPosition.x + 'px';
-            pin.style.top = pinPosition.y + 'px';
-
-            // Add a click event listener to the pin
-            pin.addEventListener('click', function () {
-                alert('You clicked the pin at position (' + pinPosition.x + ', ' + pinPosition.y + ')!');
-            });
-
-            // Add the pin to the document
-            document.body.appendChild(pin);
-        }
     }
+    for (var j = 0; j < pins.length; j++) {
+        // Get the pin position
+        const pinPosition = pins[j];
+        const modalContent: HTMLElement | null = document.getElementById('modalContent');
+        // Create a new pin element
+        const pin = document.createElement('div');
+        pin.style.width = pinPosition.width + 'px';
+        pin.style.height = pinPosition.height + 'px';
+        pin.className = 'pin';
+        pin.style.left = pinPosition.x  + 'px';
+        pin.style.top = pinPosition.y + 'px';
+        const span = document.createElement('span');
+        span.innerHTML = pinPosition.name;
+        span.classList.add('pin-element');
+        pin.appendChild(span);
+        // Add a click event listener to the pin
+        pin.addEventListener('click', function() {
+          showData(true, modalContent!);
+        });
+    
+        // Add the pin to the document
+        document.body.appendChild(pin);
+        span.style.marginLeft = `-${(span.offsetWidth / 4)}px`;
+        span.style.paddingTop = `${(pin.offsetHeight)}px`;
+      }
+     // Add the canvas to the document
+     const main: HTMLElement | null = document.querySelector(container)
+     main?.appendChild(canvas);
+
 }

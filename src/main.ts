@@ -7,16 +7,21 @@ import {drawMap} from './scripts/generateMap';
 const main: HTMLElement | null = document.getElementById('main');
 const sidebar: HTMLElement | null = document.getElementById('sidebar');
 const navbarToggler: HTMLElement | null = document.getElementById('toggleSidebar') as HTMLButtonElement;
+const modal: HTMLElement | null = document.getElementById('modal');
 
 main?.addEventListener('click',(event: Event)=> {
+ 
   event.stopPropagation();
-  event.preventDefault();
   if(sidebar && sidebar.classList.contains('show')){
     const navbarToggleIcon: Element | null = navbarToggler.children[0];
-    sidebar?.classList.remove('show');
-    sidebar?.classList.add('hide');
+    sidebar.classList.remove('show');
+    sidebar.classList.add('hide');
     navbarToggleIcon.classList.add('fa-bars');
     navbarToggleIcon.classList.remove('fa-xmark');
+  }
+  if(modal?.classList.contains('show')){
+    modal.classList.remove('show');
+    modal.classList.add('hide');
   }
 })
 
@@ -56,6 +61,6 @@ img.src = dw1Map;
 // Wait for the image to load
 img.onload = function () {
   // Init map generation;
-  drawMap(img);
+  drawMap('#main', img);
 };
 

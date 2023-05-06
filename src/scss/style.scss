@@ -8,9 +8,9 @@
 }
 
 .map {
-  overflow: auto;
-  width:100vw;
-  height: 100vh;
+  // overflow: auto;
+  width:100%;
+  height: 100%;
 }
 
 .sidebar {
@@ -58,9 +58,37 @@
 .pin {
   position: absolute;
   cursor: pointer;
+  &-element {
+    position: absolute;
+    color: $white;
+    width: max-content;
+    display: flex;
+    align-self: flex-end;
+    text-shadow: 0 0 2px $dark, 0 0 5px $dark;
+    &:hover {
+      color: $dark;
+      text-shadow: 0 0 2px $white, 0 0 5px $white;
+
+    }
+  }
 }
 
 .logo {
   text-align: center;
   width: auto;
+}
+
+.modal {
+  position: fixed;
+  max-width: 50%;
+  max-height: 50%;
+  top:0;
+  left:0;
+  right:0; 
+  bottom: 0;
+  background: $white;
+  border-image: url('../assets/images/border.png') 4 / 4px round;
+  margin:auto;
+  z-index:199;
+  padding: 4px;
 }

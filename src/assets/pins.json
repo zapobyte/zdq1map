@@ -1,10 +1,50 @@
 [
     {
         "name": "Garinham", 
-        "x": 93, 
-        "y": 100,
-        "width": "35px",
-        "height": "20px",
+        "x": 87, 
+        "y": 97,
+        "width": 32,
+        "height": 15,
         "type": "city"
+    },
+    {
+        "name": "Loto's Cave", 
+        "x": 510, 
+        "y": 255,
+        "width": 18,
+        "height": 18,
+        "type": "dungeon"
+    },
+    {
+        "name": "Tantegel Castel", 
+        "x": 754, 
+        "y": 734,
+        "width": 32,
+        "height": 32,
+        "type": "city"
+    },
+    {
+        "name": "Tantegel Town", 
+        "x": 823, 
+        "y": 716,
+        "width": 32,
+        "height": 18,
+        "type": "city"
+    },
+    {
+        "name": "Domdora", 
+        "x": 447, 
+        "y": 1484,
+        "width": 32,
+        "height": 18,
+        "type": "city"
+    },
+    {
+        "name": "Rocky Cave", 
+        "x": 525, 
+        "y": 969,
+        "width": 20,
+        "height": 20,
+        "type": "dungeon"
     }
 ]
