@@ -12,12 +12,24 @@ import snes from './assets/images/snes.png';
 
 import { generateMap } from './scripts/generateMap';
 import { toggleSidebar } from './scripts/navbar';
+
 const versions = {
   'snes': dw1MapSnes,
   'nes': dw1MapNES,
 }
 
-let mapType = Object.keys(versions)[0];
+function generatePinHtml(data: any){
+  return `
+      <h1>${data.name}</h1>
+      <div class="badge">${data.type}</div>
+  `;
+}
+
+function versionSwitchHtml(){
+  return `version <img width="18" height="18" src="${versionSelected == 'snes'? snes: nes}" class="p-sm-left p-sm-right"/> ${versionSelected}`
+}
+
+let versionSelected = Object.keys(versions)[0];
 
 const main: HTMLElement | null = document.getElementById('main');
 const sidebar: HTMLElement | null = document.getElementById('sidebar');
@@ -26,23 +38,23 @@ const modal: HTMLElement | null = document.getElementById('modal');
 const modalContent: HTMLElement | null = document.getElementById('modalContent');
 const versionContainer : HTMLElement | null = document.getElementById('versionPicker');
 
-if(versionContainer){
-  versionContainer.innerHTML = `version <img width="18" height="18" src="${mapType == 'snes'? snes: nes}" class="p-sm-left p-sm-right"/> ${mapType}`;
-  versionContainer.addEventListener('click',()=> {
-    if(Object.keys(versions)[0] === mapType){
-      mapType = Object.keys(versions)[1]
-    } else {
-      mapType = Object.keys(versions)[0]
-    }
-    localStorage.setItem('mapType',mapType);
-    versionContainer.innerHTML = `version <img width="18" height="18" src="${mapType == 'snes'? snes: nes}" class="p-sm-left p-sm-right"/> ${mapType}`;
+// Create an image object
+const image: HTMLImageElement = new Image();
 
-    // Create an image object
-    const image: HTMLImageElement = new Image();
+if(versionContainer){
+  versionContainer.innerHTML = versionSwitchHtml();
+  versionContainer.addEventListener('click',()=> {
+    if(Object.keys(versions)[0] === versionSelected){
+      versionSelected = Object.keys(versions)[1]
+    } else {
+      versionSelected = Object.keys(versions)[0]
+    }
+    localStorage.setItem('versionSelected',versionSelected);
+    versionContainer.innerHTML = versionSwitchHtml();
 
     // Set the source of the image
     // @ts-ignore
-    image.src = versions[mapType];
+    image.src = versions[versionSelected];
 
     // Wait for the image to load
     image.onload = function () {
@@ -51,13 +63,11 @@ if(versionContainer){
         main.innerHTML = '';
         document.querySelectorAll('.pin').forEach((ele)=> ele.remove())
       }
-      generateMap('#main', image, pins);
+      // @ts-ignore
+      generateMap('#main', image, pins[versionSelected]);
       const canvas = document.querySelector('canvas');
       canvas?.addEventListener('pin-click', (e: any) => {
-        const modalContentInnerHTML = `
-          <h1>${e.detail.name}</h1>
-          <div class=""></div>
-        `;
+        const modalContentInnerHTML = generatePinHtml(e.detail);
         showData(modal!, modalContent!, modalContentInnerHTML);
       })
     };
@@ -65,7 +75,7 @@ if(versionContainer){
   });
 }
 
-localStorage.setItem('mapType',mapType);
+localStorage.setItem('versionSelected',versionSelected);
 
 function showData(modal: HTMLElement, modalContent: HTMLElement, data: any) {
   if (modal && modalContent && modal.classList.contains('hide')) {
@@ -100,23 +110,18 @@ navbarToggler?.addEventListener('click', () => {
   }
 });
 
-// Create an image object
-const image: HTMLImageElement = new Image();
-
 // Set the source of the image
 // @ts-ignore
-image.src = versions[mapType];
+image.src = versions[versionSelected];
 
 // Wait for the image to load
 image.onload = function () {
   // Init map generation;
-  generateMap('#main', image, pins);
+  //@ts-ignore
+  generateMap('#main', image, pins[versionSelected]);
   const canvas = document.querySelector('canvas');
   canvas?.addEventListener('pin-click', (e: any) => {
-    const modalContentInnerHTML = `
-      <h1>${e.detail.name}</h1>
-      <div class=""></div>
-    `;
+    const modalContentInnerHTML =generatePinHtml(e.detail);
     showData(modal!, modalContent!, modalContentInnerHTML);
   })
 };

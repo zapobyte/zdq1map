@@ -142,8 +142,8 @@
 
 .modal {
   position: fixed;
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 75%;
+  max-height: 75%;
   top: 0;
   left: 0;
   right: 0;
@@ -165,4 +165,14 @@
   @media screen and (min-width:769px) {
     justify-content: center;
   }
+}
+
+.badge {
+  border-radius: 2px;
+  background: rgba($color: $dark, $alpha: 1);
+  color: $white;
+  width: max-content;
+  font-size: 0.7rem;
+  padding: 1px 2px;
+  line-height: 1rem;
 }
