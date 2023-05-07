@@ -5,7 +5,8 @@
         "y": 97,
         "width": 32,
         "height": 15,
-        "type": "city"
+        "type": "town",
+        "description":"The town of Garinham. This is the nort-west town of the game."
     },
     {
         "name": "Loto's Cave", 
@@ -13,7 +14,8 @@
         "y": 255,
         "width": 18,
         "height": 18,
-        "type": "dungeon"
+        "type": "dungeon",
+        "description":"The cave of Loto. There are no monsters here but you'll find the Tablet of Loto."
     },
     {
         "name": "Tantegel Castel", 
@@ -21,7 +23,8 @@
         "y": 734,
         "width": 32,
         "height": 32,
-        "type": "city"
+        "type": "town",
+        "description": "This is the <b>Tantegel Castel</b>. It's the place you start the game."
     },
     {
         "name": "Tantegel Town", 
@@ -29,7 +32,7 @@
         "y": 716,
         "width": 32,
         "height": 18,
-        "type": "city"
+        "type": "town"
     },
     {
         "name": "Domdora", 
@@ -37,14 +40,14 @@
         "y": 1484,
         "width": 32,
         "height": 18,
-        "type": "city"
+        "type": "town"
     },
     {
         "name": "Rocky Cave", 
         "x": 525, 
         "y": 969,
-        "width": 20,
-        "height": 20,
+        "width": 18,
+        "height": 18,
         "type": "dungeon"
     },
     {
@@ -53,7 +56,7 @@
         "y": 1675,
         "width": 64,
         "height": 48,
-        "type": "city"
+        "type": "town"
     },
     {
         "name": "Kol", 
@@ -61,7 +64,7 @@
         "y": 220,
         "width": 22,
         "height": 22,
-        "type": "city"
+        "type": "town"
     },
     {
         "name": "Rimuldar", 
@@ -69,14 +72,14 @@
         "y": 1212,
         "width": 32,
         "height": 18,
-        "type": "city"
+        "type": "town"
     },
     {
         "name": "Rain Shrine", 
         "x": 1357, 
         "y": 73,
-        "width": 22,
-        "height": 22,
+        "width": 18,
+        "height": 18,
         "type": "shrine"
     },
     {

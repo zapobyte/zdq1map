@@ -15,8 +15,15 @@ $colors : (
 );
 
 $spacers : (
- "none": $none,
+  "none": $none,
   "sm": $sm,
   "md": $md,
   "lg": $lg,
+  "auto": auto,
 );
+
+$text-position: (
+  "left": left,
+  "right": right,
+  "center": center,
+)

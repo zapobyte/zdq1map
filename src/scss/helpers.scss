@@ -45,6 +45,13 @@
   }
 }
 
+@each $position, $value in $text-position {
+    .text-#{$position} {
+      text-align: $value;
+    }
+  }
+  
+
 @each $type, $value in $spacers {
     .p-#{$type} {
       padding: $value;

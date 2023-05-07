@@ -1,23 +1,7 @@
 
 
 // Define the pin positions
-import pins from '../assets/pins.json';
-
-function showData (status: boolean, modalContent: HTMLElement ){
-    const modal: HTMLElement | null = document.getElementById('modal');
-    if(modal && modalContent){
-        if(status){
-            modal.classList.remove('hide');
-            modal.classList.add('show');
-        } else {
-            modal.classList.add('hide');
-            modal.classList.remove('show');
-        }
-    }
-   
-} 
-
-export const drawMap = (container: string, img: HTMLImageElement) => {
+export const generateMap = (container: string, img: HTMLImageElement, pins: any) => {
     // Create a canvas element
     const canvas: HTMLCanvasElement = document.createElement('canvas');
     canvas.width = img.width;
@@ -31,17 +15,15 @@ export const drawMap = (container: string, img: HTMLImageElement) => {
 
     // Get the image data from the canvas
     const imageData: ImageData | undefined = context?.getImageData(0, 0, img.width, img.height);
-    const app: HTMLElement| null = document.getElementById('app');
-    // Loop through the image data byte by byte
-    if (imageData) {
+    const app: HTMLElement | null = document.getElementById('app');
+    if (app && imageData) {
+        // Loop through the image data byte by byte
         for (let i: number = 0; i < imageData.data.length; i += 4) {
             // Get the red, green, blue, and alpha values
             const r = imageData.data[i];
             const g = imageData.data[i + 1];
             const b = imageData.data[i + 2];
             const a = imageData.data[i + 3];
-
-            // Do something with the values (e.g. manipulate the color)
 
             // Set the new red, green, blue, and alpha values
             imageData.data[i] = r;
@@ -52,36 +34,46 @@ export const drawMap = (container: string, img: HTMLImageElement) => {
 
         // Put the modified image data back onto the canvas
         context?.putImageData(imageData, 0, 0);
-    }
-    for (var j = 0; j < pins.length; j++) {
-        // Get the pin position
-        const pinPosition = pins[j];
-        const modalContent: HTMLElement | null = document.getElementById('modalContent');
-        // Create a new pin element
-        const pin = document.createElement('div');
-        pin.style.width = pinPosition.width + 'px';
-        pin.style.height = pinPosition.height + 'px';
-        pin.className = 'pin';
-        pin.style.left = pinPosition.x  + 'px';
-        pin.style.top = pinPosition.y + 'px';
-        const span = document.createElement('span');
-        span.innerHTML = pinPosition.name;
-        span.classList.add('pin-element');
-        pin.appendChild(span);
-        // Add a click event listener to the pin
-        pin.addEventListener('click', function() {
-          showData(true, modalContent!);
-        });
-    
-        // Add the pin to the document
-        app?.appendChild(pin);
-        if(span.offsetWidth - 5 > pin.offsetWidth){
-            span.style.marginLeft = `-${(span.offsetWidth / 4)}px`;
+        for (var j = 0; j < pins.length; j++) {
+            // Get the pin position
+            const pinData = pins[j];
+
+            // Create a new pin element
+            const pin = document.createElement('div');
+            pin.style.width = pinData.width + 'px';
+            pin.style.height = pinData.height + 'px';
+            pin.classList.add('pin');
+            pin.style.left = pinData.x + 'px';
+            pin.style.top = pinData.y + 'px';
+            const span = document.createElement('span');
+            span.innerHTML = pinData.name;
+            span.classList.add('pin-element');
+            pin.appendChild(span);
+
+            // Add a click event listener to the pin
+            pin.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation()
+                const event = new CustomEvent("pin-click", { detail: pinData });
+                // Dispatch the event.
+                canvas.dispatchEvent(event);
+            });
+
+            // Add the pin to the document
+            app.appendChild(pin);
+            
+            // Bring the pin text towards center of the pin
+            if (span.offsetWidth - 5 > pin.offsetWidth) {
+                span.style.marginLeft = `-${(span.offsetWidth / 4)}px`;
+            }
+            span.style.paddingTop = `${(pin.offsetHeight)}px`;
         }
-        span.style.paddingTop = `${(pin.offsetHeight)}px`;
-      }
-     // Add the canvas to the document
-     const main: HTMLElement | null = document.querySelector(container)
-     main?.appendChild(canvas);
+    }
+
+    // Add the canvas to the document
+    const main: HTMLElement | null = document.querySelector(container);
+    if (main) {
+        main.appendChild(canvas);
+    }
 
 }

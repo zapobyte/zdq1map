@@ -5,40 +5,49 @@
     <link rel="icon" type="image/png" href="/favicon-32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dragon Quest 1 Map - Full interactive map, Walkthrough, Game Information and Resources, FAQ </title>
+    <script src="https://kit.fontawesome.com/d3a20decc0.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="app" class="app">
 
       <nav class="navbar m-sm" id="navbar">
+
         <button class="toggle-sidebar" id="toggleSidebar">
           <i class="fa-solid fa-bars"></i>
         </button>
       </nav>
 
       <aside class="hide sidebar" id="sidebar">
-        <section class="sidebar-content" id="sidebarContent">
+        <div class="sidebar-content" id="sidebarContent">
 
-          <div class="logo p-md-top">
-            <img src="./src/assets/images/zdqmap.png" />
+          <div class="logo p-md-top p-sm">
+            <img src="./src/assets/images/zdqmicon.png" width="64" height="64" />
+            <div class="p-sm">
+              <h1>
+              z<span style="color: gold; text-shadow: 1px 1px 1px black">DQ</span>map
+              </h1>
+              <div class="version-picker" id="versionPicker"></div>
+            </div>
           </div>
-        
-          <menu class="text-dark p-sm">
-            <li> Armors </li>
-            <li> Shields </li>
-            <li> Weapons </li>
-            <li> Spells </li>
-            <li> Items </li>
-            <li>Monsters</li>
-            <li>Seeds</li>
-            <li>
-              <span>Maps</span>
-              <ul> 
-                <li>Map 1</li>
-              </ul>
+          <p class="p-sm text-center">
+            <span>Dragon Quest 1  Interactive Map</span>
+          </p>
+
+          <menu class="menu p-sm">
+            <li class="menu-item">
+              Armors
             </li>
-            <li>Walkthrough</li>
+            <li class="menu-item">Shields</li>
+            <li class="menu-item">Weapons</li>
+            <li class="menu-item">Spells</li>
+            <li class="menu-item">Items</li>
+            <li class="menu-item">Monsters</li>
+            <li class="menu-item">Seeds</li>
+            <li class="menu-item">Maps</li>
+            <li class="menu-item">Walkthrough</li>
+            <li class="menu-item">Story</li>
           </menu>
-        </section>
+        </div>
       </aside>
 
       <main id="main" class="map"></main>
@@ -47,12 +56,13 @@
 
       </footer>
     </div>
+
     <section class="hide modal" id="modal">
-      <div class="modal-content text-dark p-sm" id="modalContent">
+      <div class="modal-content p-sm" id="modalContent">
 
       </div>
     </section>
-    <!-- <script src="https://kit.fontawesome.com/d3a20decc0.js" crossorigin="anonymous"></script> -->
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

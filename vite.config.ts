@@ -3,6 +3,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [
     VitePWA({
+      injectRegister: 'auto',
       registerType: 'autoUpdate',
       strategies: 'generateSW',
       devOptions: {
