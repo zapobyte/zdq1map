@@ -69,6 +69,16 @@
     .p-#{$type}-right {
         padding-right: $value;
     }
+
+    .p-#{$type}-y {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+
+    .p-#{$type}-x {
+        padding-right: $value;
+        padding-left: $value;
+    }
     
     .m-#{$type} {
       margin: $value;

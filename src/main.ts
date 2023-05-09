@@ -1,6 +1,6 @@
 // Import style
 import './scss/style.scss'
-// Import pins data
+// Import data
 import pins from './assets/pins.json';
 
 // Import Dragon Warrior 1 map
@@ -8,6 +8,9 @@ import dw1MapSnes from './assets/images/dw1/maps/dq1snes_map.png';
 import dw1MapNES from './assets/images/dw1/maps/dw1-nes.webp';
 import nes from './assets/images/nes.png';
 import snes from './assets/images/snes.png';
+
+import {generatePinHtml} from './scripts/mapPins';
+import { generateArmorsHTML } from './scripts/armors';
 
 import { generateMap } from './scripts/generateMap';
 import { toggleSidebar } from './scripts/navbar';
@@ -17,12 +20,6 @@ const versions = {
   'nes': dw1MapNES,
 }
 
-function generatePinHtml(data: any){
-  return `
-      <h1>${data.name}</h1>
-      <div class="badge">${data.type}</div>
-  `;
-}
 
 function versionSwitchHtml(){
   return `version <img width="18" height="18" src="${versionSelected == 'snes'? snes: nes}" class="p-sm-left p-sm-right"/> ${versionSelected}`
@@ -36,6 +33,16 @@ const navbarToggler: HTMLElement | null = document.getElementById('toggleSidebar
 const modal: HTMLElement | null = document.getElementById('modal');
 const modalContent: HTMLElement | null = document.getElementById('modalContent');
 const versionContainer : HTMLElement | null = document.getElementById('versionPicker');
+
+const menuItems : NodeListOf<any> | null = document.querySelectorAll('.menu-item');
+
+menuItems.forEach((item)=> {
+  item.addEventListener(('click'),()=> {
+    if(item.id.toLowerCase() === 'armors' ){
+      showData(modal!,modalContent!,generateArmorsHTML())
+    }
+  })
+})
 
 // Create an image object
 const image: HTMLImageElement = new Image();
@@ -76,14 +83,27 @@ if(versionContainer){
 
 localStorage.setItem('versionSelected',versionSelected);
 
-function showData(modal: HTMLElement, modalContent: HTMLElement, data: any) {
-  if (modal && modalContent && modal.classList.contains('hide')) {
-    modal.classList.remove('hide');
-    modal.classList.add('show');
-    modalContent.innerHTML = data;
-  } else {
+function closeModal() {
+  if(modal){
     modal.classList.add('hide');
     modal.classList.remove('show');
+  }
+ 
+}
+
+function showModal(){
+  if(modal){
+    modal.classList.remove('hide');
+    modal.classList.add('show');
+  }
+}
+
+function showData(modal: HTMLElement, modalContent: HTMLElement, data: any) {
+  if (modal && modalContent && modal.classList.contains('hide')) {
+    showModal()
+    modalContent.innerHTML = data;
+  } else {
+    closeModal()
     modalContent.innerHTML = '';
   }
 }
@@ -92,20 +112,23 @@ main?.addEventListener('click', (event: Event) => {
   event.stopPropagation();
   if (sidebar && sidebar.classList.contains('show')) {
     const navbarToggleIcon: Element | undefined = navbarToggler?.children[0];
+    closeModal();
     sidebar.classList.remove('show');
     sidebar.classList.add('hide');
     navbarToggleIcon?.classList.add('fa-bars');
     navbarToggleIcon?.classList.remove('fa-xmark');
   }
-  if (modal?.classList.contains('show')) {
-    modal.classList.remove('show');
-    modal.classList.add('hide');
+  if (modal && modal.classList.contains('show')) {
+    closeModal();
   }
 })
 
 navbarToggler?.addEventListener('click', () => {
   if (sidebar) {
     toggleSidebar(sidebar, navbarToggler);
+    if (modal && modal.classList.contains('show')) {
+      closeModal();
+    }
   }
 });
 

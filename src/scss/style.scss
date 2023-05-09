@@ -40,7 +40,7 @@
 
     &::-webkit-scrollbar-thumb {
       background-color: $dark;
-      border-radius: 2px;
+      border-radius: 3px;
     }
 
     &::-webkit-scrollbar-track {
@@ -78,7 +78,7 @@
 }
 
 .navbar {
-  z-index: 100;
+  z-index: 999;
   position: fixed;
   right: 0rem;
   display: inline-flex;
@@ -142,8 +142,8 @@
 
 .modal {
   position: fixed;
-  max-width: 75%;
-  max-height: 75%;
+  max-width: max-content;
+  height: max-content;
   top: 0;
   left: 0;
   right: 0;
@@ -152,7 +152,12 @@
   border-image: url('../assets/images/border.png') 4 / 4px round;
   margin: auto;
   z-index: 199;
-  padding: 4px;
+  &-content {
+    margin: 10px;
+    height:max-content;
+    max-height: 90vh;
+    overflow: auto;
+  }
 }
 
 .version-picker {
@@ -168,11 +173,44 @@
 }
 
 .badge {
-  border-radius: 2px;
-  background: rgba($color: $dark, $alpha: 1);
+  border-radius: 3px;
   color: $white;
   width: max-content;
   font-size: 0.7rem;
-  padding: 1px 2px;
+  padding: 2px 3px;
   line-height: 1rem;
+}
+.badge-dungeon {
+  background: $red;
+}
+
+.badge-town {
+  background: $brown;
+}
+
+.badge-shrine {
+  background: $dark;
+}
+
+details[open] > summary {
+  list-style: url('../assets/images/arrow_empty.png');
+}
+summary { 
+  cursor: pointer;
+  margin-left: calc(0.5rem + 4px);
+  list-style: url('../assets/images/arrow.png');
+}
+
+.border {
+  border-radius: 0.25rem
+}
+
+.item {
+  padding: $sm;
+  &-armor {
+    & img {
+      max-height: 64px;
+      margin: auto;
+    }
+  }
 }

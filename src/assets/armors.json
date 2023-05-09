@@ -1,0 +1,58 @@
+[
+    {
+        "name":"Chain Mail",
+        "buy":"300",
+        "sell":"150",
+        "defense":"10",
+        "found":"Garai, Mercado",
+        "img":"chain_mail"
+    },
+{
+    "name":"Clothes",
+    "buy":"20",
+    "sell":"10",
+    "defense":"2",
+    "found":"Maira (Treasure), Radatome Town",
+    "img":"clothes_th"
+},
+{
+    "name":"Iron Armor",
+    "buy":"1000",
+    "sell":"500",
+    "defense":"16",
+    "found":"Maira, Rimuldar",
+    "img":"half_plate_iron_armor"
+
+},{
+    "name":"Leather Armor",
+    "buy":"70",
+    "sell":"35",
+    "defense":"4",
+    "found":"Garai, Mercado, Radatome Town",
+    "img":"leather_armor_th"
+}
+,{
+    "name":"Magic Armor",
+    "buy":"7700",
+    "sell":"3850",
+    "defense":"24",
+    "found":"Mercado, Rimuldar",
+    "img":"magic_armor_th"
+}
+,{
+    "name":"Roto's (Loto) Armor",
+    "buy":"-",
+    "sell":"-",
+    "defense":"28",
+    "found":"Domdora (Treasure)",
+    "img":"edricks_roto_logo"
+}
+,{
+    "name":"Steel Armor",
+    "buy":"3000",
+    "sell":"1500",
+    "defense":"24",
+    "found":"Maira, Mercado, Rimuldar",
+    "img":"full_plate_steel_armor"
+}
+]

@@ -5,7 +5,6 @@
 
 :root {
     font-family: DW1;
-    line-height: 1.5;
     font-weight: 400;
     color-scheme: light dark;
     font-synthesis: none;
@@ -26,7 +25,7 @@
     }
     &::-webkit-scrollbar-thumb {
         background-color: $dark;
-        border-radius: 2px;
+        border-radius: 3px;
     }
     &::-webkit-scrollbar-track {
         background-color: #eee;
@@ -36,7 +35,7 @@
     }
     &::-webkit-scrollbar-thumb:horizontal {
         background-color: $dark;
-        border-radius: 2px;
+        border-radius: 3px;
     }
     &::-webkit-scrollbar-track:horizontal {
         background-color: #eee;
