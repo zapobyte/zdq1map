@@ -17,7 +17,7 @@ import { toggleSidebar } from './scripts/navbar';
 
 const versions = {
   'snes': dw1MapSnes,
-  'nes': dw1MapNES,
+  // 'nes': dw1MapNES,
 }
 
 
