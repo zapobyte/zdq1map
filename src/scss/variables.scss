@@ -3,6 +3,7 @@ $light: #ededed;
 $white: #ffffff;
 $red: #ff1900;
 $brown: #c77400;
+$blue: #0000ce;
 
 $none: 0;
 $sm: 0.5rem;
@@ -15,7 +16,8 @@ $colors : (
   "light": $light,
   "white": $white,
   "red": $red,
-  "brown": $brown
+  "brown": $brown,
+  "blue": $blue
 );
 
 $spacers : (

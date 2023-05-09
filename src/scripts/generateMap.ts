@@ -14,16 +14,16 @@ export const generateMap = (container: string, img: HTMLImageElement, pins: any)
     context?.drawImage(img, 0, 0, img.width, img.height);
 
     // Get the image data from the canvas
-    const imageData: ImageData | undefined = context?.getImageData(0, 0, img.width, img.height);
+    const imageData: ImageData | undefined  = context?.getImageData(0, 0, img.width, img.height);
     const app: HTMLElement | null = document.getElementById('app');
     if (app && imageData) {
         // Loop through the image data byte by byte
         for (let i: number = 0; i < imageData.data.length; i += 4) {
             // Get the red, green, blue, and alpha values
-            const r = imageData.data[i];
-            const g = imageData.data[i + 1];
-            const b = imageData.data[i + 2];
-            const a = imageData.data[i + 3];
+            const r: number = imageData.data[i];
+            const g: number = imageData.data[i + 1];
+            const b: number = imageData.data[i + 2];
+            const a: number = imageData.data[i + 3];
 
             // Set the new red, green, blue, and alpha values
             imageData.data[i] = r;
@@ -39,13 +39,13 @@ export const generateMap = (container: string, img: HTMLImageElement, pins: any)
             const pinData = pins[j];
 
             // Create a new pin element
-            const pin = document.createElement('div');
+            const pin: HTMLElement = document.createElement('div');
             pin.style.width = pinData.width + 'px';
             pin.style.height = pinData.height + 'px';
             pin.classList.add('pin');
             pin.style.left = pinData.x + 'px';
             pin.style.top = pinData.y + 'px';
-            const span = document.createElement('span');
+            const span: HTMLElement = document.createElement('span');
             span.innerHTML = pinData.name;
             span.classList.add('pin-element');
             pin.appendChild(span);
@@ -54,14 +54,14 @@ export const generateMap = (container: string, img: HTMLImageElement, pins: any)
             pin.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation()
-                const event = new CustomEvent("pin-click", { detail: pinData });
+                const event: CustomEvent = new CustomEvent("pin-click", { detail: pinData });
                 // Dispatch the event.
                 canvas.dispatchEvent(event);
             });
 
             // Add the pin to the document
             app.appendChild(pin);
-            
+
             // Bring the pin text towards center of the pin
             if (span.offsetWidth - 5 > pin.offsetWidth) {
                 span.style.marginLeft = `-${(span.offsetWidth / 4)}px`;

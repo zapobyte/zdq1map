@@ -19,8 +19,6 @@ const IMG_ARMORS: any = {
 }
 
 export const generateArmorsHTML = () => {
-
-
     interface Armor {
         "name": string;
         "buy": string;
@@ -66,7 +64,7 @@ export const generateArmorsHTML = () => {
         </table>
     `;
 
-    const context: Armor[]= armors.map((armor: Armor)=> {
+    const context: Armor[] = armors.map((armor: Armor) => {
         return {
             ...armor,
             img: IMG_ARMORS[armor.img]
