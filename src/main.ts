@@ -5,7 +5,7 @@ import pins from './assets/pins.json';
 
 // Import Dragon Warrior 1 map
 import dw1MapSnes from './assets/images/dw1/maps/dq1snes_map.png';
-import dw1MapNES from './assets/images/dw1/maps/dw1-nes.webp';
+// import dw1MapNES from './assets/images/dw1/maps/dw1-nes.webp';
 import nes from './assets/images/nes.png';
 import snes from './assets/images/snes.png';
 
